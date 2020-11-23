@@ -12,8 +12,11 @@
         },    // Request filter
     {
         // Modify the headers for these pages
-		urls: ["http://*.haaretz.co.il/*","https://*.haaretz.co.il/*"]
-//        types: ["main_frame"]
+    urls: [ "http://*.haaretz.co.il/*",
+            "https://*.haaretz.co.il/*",
+            "http://*.themarker.com/*",
+            "https://*.themarker.com/*"]
+
     },
     ["blocking", "requestHeaders"]
 );
