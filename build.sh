@@ -9,7 +9,7 @@
 #      REVISION:  ---
 #===============================================================================
 
-trap _cleanup SIGTERM EXIT
+trap _cleanup SIGTERM
 
 _cleanup() {
 	echo
@@ -21,4 +21,5 @@ find . -maxdepth 1 -not -name '.*' -type f  -exec cp -v {} ./build/ \;
 cp -vr ./icons build/
 rm build/build.sh
 version=$(cat manifest.json | jq -r .version)
-zip dist/harpagon_$version.zip build  
+[ -d "dist" ] || mkdir dist
+zip  -r dist/harpagon_$version.zip build 
