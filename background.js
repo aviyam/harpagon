@@ -1,22 +1,40 @@
-	
-  chrome.webRequest.onBeforeSendHeaders.addListener(
-        function(details) {
-		 
-          for (var i = 0; i < details.requestHeaders.length; ++i) {
-            if (details.requestHeaders[i].name === 'User-Agent') {
-              details.requestHeaders[i].value = 'facebookexternalhit/1.1 +http://www.facebook.com/externalhit_uatext.php';
-			  
-            }
-          }
-          return {requestHeaders: details.requestHeaders};
-        },    // Request filter
-    {
-        // Modify the headers for these pages
-    urls: [ "http://*.haaretz.co.il/*",
-            "https://*.haaretz.co.il/*",
-            "http://*.themarker.com/*",
-            "https://*.themarker.com/*"]
+!function(){
+    "use strict";
+    const e=Object.values(chrome.declarativeNetRequest.ResourceType);
+    const b="facebookexternalhit/1.1 +http://www.facebook.com/externalhit_uatext.php";
 
-    },
-    ["blocking", "requestHeaders"]
-);
+    var t=[
+        {
+            id:1,
+            priority:1,
+            action:{
+                type:chrome.declarativeNetRequest.RuleActionType.MODIFY_HEADERS,
+                requestHeaders:[
+                    {
+                    operation:chrome.declarativeNetRequest.HeaderOperation.SET,
+                    header:"User-Agent",value:b}
+                ]
+            },
+                condition:{
+                    "urlFilter": "https://*.haaretz.co.il/*",
+                    resourceTypes:e
+                }
+        },
+        {
+            id:2,
+            priority:1,
+            action:{
+                type:chrome.declarativeNetRequest.RuleActionType.MODIFY_HEADERS,
+                requestHeaders:[
+                    {
+                    operation:chrome.declarativeNetRequest.HeaderOperation.SET,
+                    header:"User-Agent",value:b}
+                ]
+            },
+                condition:{
+                    "urlFilter": "https://*.themarker.com/*",
+                    resourceTypes:e
+                }
+         }
+        ];
+        chrome.declarativeNetRequest.updateDynamicRules({removeRuleIds:t.map((e=>e.id)),addRules:t})}();
