@@ -1,19 +1,24 @@
-#!/usr/bin/bash
-
+#!/bin/bash - 
+#===============================================================================
+#
+#          FILE: build.sh
+# 
+#         USAGE: ./build.sh 
+#        AUTHOR: Aviyam Fischer (), 
+#       CREATED: 03/12/2023 06:03:12 PM
+#      REVISION:  ---
+#===============================================================================
 
 trap _cleanup SIGTERM EXIT
 
 _cleanup() {
+	echo
  rm -rf build
 }
 
 mkdir ./build
-find . -not -name '.*' -type f -maxdepth 1 -exec cp -v {} ./build/ \;
+find . -maxdepth 1 -not -name '.*' -type f  -exec cp -v {} ./build/ \; 
+cp -vr ./icons build/
 rm build/build.sh
 version=$(cat manifest.json | jq -r .version)
-zip harpagon_$version.zip build  
-
-
-
-
-
+zip dist/harpagon_$version.zip build  
