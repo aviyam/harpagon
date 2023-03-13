@@ -1,17 +1,17 @@
-- name: zip
-  uses: TheDoctor0/zip-release@0.7.1
-  with:
-    # Filename for archive
-    filename: # default is release.zip
-    # Base path for archive files
-    path: # optional, default is .
+name: zip
+uses: TheDoctor0/zip-release@0.7.1
+with:
+
+ filename: # default is release.zip
+
+ path: # optional, default is .
     # Working directory before zipping
-    directory: build
+ directory: build
     # List of excluded files / directories
     exclusions: build.sh, .gitignore
     # List of excluded files / directories with recursive wildcards (only applies on Windows with `zip` type)
-    recursive_exclusions: # optional, default is 
+ recursive_exclusions: # optional, default is 
     # Provide any custom parameters to the command
-    custom: # optional, default is 
+ custom: # optional, default is 
     # Tool to use for archiving
-    type: # optional, default is zip
+ type: # optional, default is zip
