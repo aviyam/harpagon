@@ -1,17 +1,12 @@
-name: zip
-uses: TheDoctor0/zip-release@0.7.1
-with:
-
- filename: # default is release.zip
-
- path: # optional, default is .
-    # Working directory before zipping
- directory: build
-    # List of excluded files / directories
-    exclusions: build.sh, .gitignore
-    # List of excluded files / directories with recursive wildcards (only applies on Windows with `zip` type)
- recursive_exclusions: # optional, default is 
-    # Provide any custom parameters to the command
- custom: # optional, default is 
-    # Tool to use for archiving
- type: # optional, default is zip
+on: push
+name: Build release
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: zip
+      uses: TheDoctor0/zip-release@0.7.1
+      with:
+        exclusions: build.sh, .gitignore
+    
