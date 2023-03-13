@@ -8,5 +8,8 @@ jobs:
     - name: zip
       uses: TheDoctor0/zip-release@0.7.1
       with:
-        exclusions: build.sh, .gitignore
+        exclusions: |
+          build.sh
+          .gitignore 
+          .git
     
