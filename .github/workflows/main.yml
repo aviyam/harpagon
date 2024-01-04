@@ -13,7 +13,6 @@ jobs:
           mkdir ./dist
           find . -maxdepth 1 -not -name '.*' -type f  -exec cp -v {} ./build/ \; 
           cp -r ./icons ./build/
-          rm build/build.sh
           echo "CRX_VERSION=$(cat manifest.json | jq -r .version)" >> $GITHUB_ENV
         shell: bash
 
