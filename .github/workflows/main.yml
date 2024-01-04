@@ -32,3 +32,12 @@ jobs:
           # The following is optional if you need update.xml file
           # updateXmlPath: 'build/update.xml'
           # updateXmlCodebaseUrl: 'https://server.com/extension.crx'
+
+
+      - name: Release with Notes
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            dist/harpagon_${{ env.CRX_VERSION }}.crx
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
