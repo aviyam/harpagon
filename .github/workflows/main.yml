@@ -37,6 +37,7 @@ jobs:
       - name: Release with Notes
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${{ env.CRX_VERSION }} 
           files: |
             dist/harpagon_${{ env.CRX_VERSION }}.crx
         env:
