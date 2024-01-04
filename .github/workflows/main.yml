@@ -12,12 +12,11 @@ jobs:
           mkdir  ./build
           mkdir ./dist
           find . -maxdepth 1 -not -name '.*' -type f  -exec cp -v {} ./build/ \; 
-          ls -las .
-          cp -r icons build/
+          cp -r ./icons ./build/
           rm build/build.sh
+          echo "CRX_VERSION=$(cat manifest.json | jq -r .version)" >> $GITHUB_ENV
         shell: bash
 
-    # pack zip and read manifest, can be reused in the following steps
       - id: packExtensionDir
         uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
         with:
@@ -26,9 +25,9 @@ jobs:
       
       - uses: cardinalby/webext-buildtools-chrome-crx-action@v2
         with:
-          # zip file made at the packExtensionDir step
+          
           zipFilePath: 'dist/extension.zip'
-          crxFilePath: 'dist/harpagon_${version}.crx'
+          crxFilePath: 'dist/harpagon_${{ env.CRX_VERSION }}.crx'
           privateKey: ${{ secrets.HARPAGON_PEM }}
           # The following is optional if you need update.xml file
           # updateXmlPath: 'build/update.xml'
