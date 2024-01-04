@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Harpagon",
   "description": "To boldly read",
-  "version": "3.4",
+  "version": "3.5",
   "background": {
     "service_worker": "background.js"
   },
