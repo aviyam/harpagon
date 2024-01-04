@@ -1,7 +1,7 @@
 !function(){
     "use strict";
     const e=Object.values(chrome.declarativeNetRequest.ResourceType);
-    const b="facebookexternalhit/1.1 +http://www.facebook.com/externalhit_uatext.php";
+    const b="Mozilla/5.0 (compatible; SemrushBot; +http://www.semrush.com/bot.html)";
 
     var t=[
         {
