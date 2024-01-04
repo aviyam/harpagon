@@ -1,4 +1,7 @@
 # harpagon
+[![Build]
+(https://github.com/aviyam/harpagon/actions/workflows/main.yml/badge.svg?branch=main&event=push)]
+(https://github.com/aviyam/harpagon/actions/workflows/main.yml)
 
 Harpagon removes the need to use your credit card. 
 
