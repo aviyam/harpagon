@@ -1,5 +1,5 @@
 # harpagon
-![Build](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?branch=main)
+[![.github/workflows/main.yml](https://github.com/aviyam/harpagon/actions/workflows/main.yml/badge.svg?event=push)](https://github.com/aviyam/harpagon/actions/workflows/main.yml)
 
 Harpagon removes the need to use your credit card. 
 
@@ -15,3 +15,6 @@ Harpagon removes the need to use your credit card.
 - Unzip
 - Open extensions page (chrome://extensions/) and set to developer mode
 - Click the "Load Unpacked" and select the unzipped folder
+
+
+
