@@ -1,0 +1,31 @@
+steps:
+jobs:
+  runscript:
+    name: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call a Bash Script
+        run:  |
+          mkdir  ./build
+          mkdir ./dist
+          find . -maxdepth 1 -not -name '.*' -type f  -exec cp -v {} ./build/ \; 
+          cp -vr ./icons build/
+          rm build/build.sh
+        shell: bash
+
+    # pack zip and read manifest, can be reused in the following steps
+      - id: packExtensionDir
+        uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
+        with:
+          extensionDir: 'build'
+          zipFilePath: 'dist/extension.zip'
+      
+      - uses: cardinalby/webext-buildtools-chrome-crx-action@v2
+        with:
+          # zip file made at the packExtensionDir step
+          zipFilePath: 'dist/extension.zip'
+          crxFilePath: 'dist/harpagon_${version}.crx'
+          privateKey: ${{ secrets.HARPAGON_PEM }}
+          # The following is optional if you need update.xml file
+          # updateXmlPath: 'build/update.xml'
+          # updateXmlCodebaseUrl: 'https://server.com/extension.crx'
