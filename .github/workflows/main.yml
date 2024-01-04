@@ -40,4 +40,4 @@ jobs:
           files: |
             dist/harpagon_${{ env.CRX_VERSION }}.crx
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.HARPAGON_TOKEN }}
