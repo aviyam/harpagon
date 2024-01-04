@@ -10,6 +10,7 @@ jobs:
           mkdir  ./build
           mkdir ./dist
           find . -maxdepth 1 -not -name '.*' -type f  -exec cp -v {} ./build/ \; 
+          ls -las .
           cp -r icons build/
           rm build/build.sh
         shell: bash
