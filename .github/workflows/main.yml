@@ -4,7 +4,9 @@ jobs:
   runscript:
     name: 
     runs-on: ubuntu-latest
+    
     steps:
+      - uses: actions/checkout@v2
       - name: Call a Bash Script
         run:  |
           mkdir  ./build
